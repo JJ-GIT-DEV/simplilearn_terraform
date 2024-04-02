@@ -1,11 +1,18 @@
-Create key pair with keypair type as ED25519 and  private key file format as .pem
-
-
-
 provider "aws" {
   region     = "us-east-1"
   shared_credentials_files = ["~/.aws/credentials"]
 }
+
+
+data "aws_ami" "ami_dynamic" {
+  most_recent      = true
+  owners           = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
+
 
 resource "aws_security_group" "test1" {
   name        = "test1"
@@ -34,12 +41,12 @@ ingress {
 }
 
 
-resource "aws_instance" "web1" {
-  ami           = "ami-03c7d01cf4dedc891"
+resource "aws_instance" "ec2_web_pipeline" {
+  ami           = data.aws_ami.ami_dynamic.id
   instance_type = "t2.micro"
 
   tags = {
-    Name = "Project1"
+    Name = "project-terrafrom-instance"
   }
    key_name = "web-key"
    user_data = <<-EOF

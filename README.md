@@ -18,3 +18,15 @@ This description shows how you can use terraforms to create a infrastructure and
 
 2 Connection between develop machine and aws
 2.1 aws configure will be store in .aws on profile
+
+3 Resource on AWS on EC2 for ubuntu machine
+![AMI ID](image-4.png)
+
+4 Resource file with variable on terraform create a file with variable.tf
+
+
+
+# terraform commands
+terraform plan -> verify the command 
+terrafrom apply -> execute and create
+terraform destroy -> delete the infrastructure
