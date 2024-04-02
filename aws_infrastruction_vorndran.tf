@@ -123,32 +123,21 @@ resource "aws_instance" "ec2_web_pipeline" {
   tags = {
     Name = "${var.environment}-${count.index}"
   }
-
-   user_data = <<-EOF
-      #!/bin/bash
-        sudo yum install git -y
-        sudo amazon-linux-extras install java-openjdk11 -y
-  	   sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-        sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-        sudo yum install jenkins -y
-        sudo systemctl start jenkins
-   EOF
-}
-
-provisioner "remote-exec" {
- connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    private_key = tls_private_key.web-key.private_key_pem
-    host     = self.public_ip
-  }
+  provisioner "remote-exec" {
+    connection {
+        type     = "ssh"
+        user     = "ec2-user"
+        private_key = tls_private_key.web-key.private_key_pem
+        host     = self.public_ip
+    }
   inline = [
-    "sudo yum update -y",
-    "sudo yum install git -y",
-    "sudo amazon-linux-extras install java-openjdk11 -y",
-    "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo",
-    "sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key",
-    "sudo yum install jenkins -y",
-    "sudo yum install python3.9 -y"
-  ]
+        "sudo yum update -y",
+        "sudo yum install git -y",
+        "sudo amazon-linux-extras install java-openjdk11 -y",
+        "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo",
+        "sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key",
+        "sudo yum install jenkins -y",
+        "sudo yum install python3.9 -y"
+    ]
+  }
 }
