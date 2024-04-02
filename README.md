@@ -38,6 +38,7 @@ This description shows how you can use terraforms to create an infrastructure on
 ```terminal
     terraform init -upgrade
 ```
+
 ![install terraform plugin](image-5.png)
 
  2.5 provisioner "remote-exec" resource block is for the installation of java, jenkins and python in the instance
@@ -49,6 +50,7 @@ terraform destroy -> delete the infrastructure
 
  2.7 output\result of the installation in aws
 aws create instance WebServer
+
 ![instance WebServer](image-6.png)
 
  2.8 output terraform plan
