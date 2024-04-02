@@ -38,7 +38,7 @@ terraform destroy -> delete the infrastructure
 7 create resource for private and public key to connect. for the resource we need a plugin. 
 to install terraform plugin:
 > terrafrom init -upgrade
-
+![install terraform plugin](image-5.png)
 8 provisioner "remote-exec" to install java, jenkins and python on the instance
 
 9 output installation on aws

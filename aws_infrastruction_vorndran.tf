@@ -54,7 +54,7 @@ resource "aws_route" "sl-route" {
   gateway_id = aws_internet_gateway.sl-gw.id
 }
 
-resource "aws_security_group" "allow-web" {
+resource "aws_security_group" "allow_web" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.sl-vpc.id
