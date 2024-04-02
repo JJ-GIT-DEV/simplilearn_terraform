@@ -7,5 +7,9 @@ default = "t2.micro"
 }
 
 variable "environment" {
-default = "Dev"
+default = "project-terrafrom-instance-dev"
+}
+
+variable "instance_count" {
+default = 1
 }

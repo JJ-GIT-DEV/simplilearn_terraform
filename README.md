@@ -23,10 +23,22 @@ This description shows how you can use terraforms to create a infrastructure and
 ![AMI ID](image-4.png)
 
 4 Resource file with variable on terraform create a file with variable.tf
+https://github.com/JJ-GIT-DEV/simplilearn_terraform.git
 
 
-
-# terraform commands
+### terraform commands
 terraform plan -> verify the command 
 terrafrom apply -> execute and create
 terraform destroy -> delete the infrastructure
+
+5 on terraform file create a vpc network with route table
+
+6 create securty group to allow tls inbound traffic
+
+7 create resource for private and public key to connect. for the resource we need a plugin. 
+to install terraform plugin:
+> terrafrom init -upgrade
+
+8 provisioner "remote-exec" to install java, jenkins and python on the instance
+
+9 output installation on aws
